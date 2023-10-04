@@ -9,10 +9,6 @@ private:
     float price;
 
 public:
-    // name same as class name
-    // no return types
-    // invoked automatically every time obj is created
-
     Item()
     {
         cout << "Object created at: " << this << endl;
@@ -24,6 +20,12 @@ public:
     {
         this->name = name;
         this->price = price;
+    }
+
+    Item(const Item &item)
+    {
+        name = item.name;
+        price = item.price;
     }
 
     string getName()
@@ -43,7 +45,6 @@ public:
 
     void setPrice(float price)
     {
-        // (*this).price = price;
         this->price = price;
     }
 
