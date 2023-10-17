@@ -1,37 +1,73 @@
-#include "Item.h"
+#include <iostream>
 #include <string>
+
+using namespace std;
+
+class Vehicle
+{
+public:
+    string name;
+    string color;
+    int topSpeed;
+
+    Vehicle()
+    {
+        cout << "Vehicle's Constructor" << endl;
+    }
+
+    Vehicle(string name, string color, int topSpeed)
+    {
+        cout << "Vehicle's Parameterized Constructor" << endl;
+        this->name = name;
+        this->color = color;
+        this->topSpeed = topSpeed;
+    }
+
+    void print()
+    {
+        cout << "Name= " << name << "\n";
+        cout << "Color= " << color << "\n";
+        cout << "Top Speed= " << topSpeed << "\n";
+    }
+
+    void start()
+    {
+        cout << "Vehicle is starting.";
+    }
+};
+
+class Car : public Vehicle
+{
+
+public:
+    string transmission;
+
+    Car()
+    {
+        cout << "Car's Constructor" << endl;
+    }
+
+    Car(string name, string color, int topSpeed, string transmission) : Vehicle(name, color, topSpeed)
+    {
+        cout << "Car's Parameterized Constructor" << endl;
+        this->transmission = transmission;
+    }
+
+    void print()
+    {
+        Vehicle::print();
+        cout << "Transmission= " << transmission << endl;
+    }
+
+    void start()
+    {
+        cout << "The Car engine starts in a different way than other vehicles." << endl;
+    }
+};
 
 int main()
 {
-    // Explicit
-    // Item item1 = Item();
-
-    // Implicit
-    // Item item2;
-
-    // Constructor invokation without reference to the object created
-    // Item();
-
-    // instantly use the created object without referring to it; however access to
-    // the object is lost after the current line
-    // Item().printItem();
-
-    // Using Default Constructor
-    // Item item = Item();
-    // item.setName("Pen");
-    // item.setPrice(23.44);
-    // item.printItem();
-
-    // Using Parameterized Constructor
-    Item item = Item("Pen", 23.44);
-    item.printItem();
+    // Car c1;
+    Car c1 = Car("Rapid", "White", 160, "Manual");
+    return 0;
 }
-/*
-
-Overloading, difference must exist at least one :-
-
-1. Number of params
-2. Type of params
-3. Sequence of params
-
-*/
